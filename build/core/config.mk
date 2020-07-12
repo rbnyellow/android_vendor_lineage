@@ -22,3 +22,8 @@ FRAMEWORK_LINEAGE_API_NEEDS_UPDATE_TEXT := $(TOPDIR)vendor/lineage/build/core/ap
 
 # Rules for QCOM targets
 include $(TOPDIR)vendor/lineage/build/core/qcom_target.mk
+
+# We modify several neverallows, so let the build proceed
+ifneq ($(TARGET_BUILD_VARIANT),user)
+SELINUX_IGNORE_NEVERALLOWS := true
+endif
